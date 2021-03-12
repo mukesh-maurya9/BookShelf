@@ -21,9 +21,11 @@ app.use("/auth", Auth);
 app.use("/books", BooksAPI);
 app.use("/admin", Admin);
 app.use("/order", Order)
-app.get("/", (req, res)=>{
-  res.status(200).send("<h1>Helth is OK!!</h1>")
-})
+app.get("/", (req, res) => {
+  res.render("home", {
+    title: "BookShelf.com",
+  });
+});
 app.get("/home", (req, res) => {
   res.render("home", {
     title: "BookShelf.com",
