@@ -10,10 +10,7 @@ const Order = require("../controller/Order")
 const path = require("path");
 const hbs = require("hbs");
 const session = require("express-session")
-// if (typeof localStorage === "undefined" || localStorage === null) {
-//   const LocalStorage = require('node-localstorage').LocalStorage;
-//   localStorage = new LocalStorage('./scratch');
-// }
+
 
 ///use session
 app.use(session({

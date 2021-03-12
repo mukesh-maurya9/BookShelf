@@ -146,8 +146,7 @@ router.put("/profile/update", (req, res) => {
 });
 // logout
 router.get("/logout", (req, res) => {
-  // res.session.userData = null;
-  // req.session.token = null;
-  return res.redirect("/home");
+  req.session.destroy();
+  return res.redirect("/home?errMessage=You Have Sucessfully logout.")
 });
 module.exports = router;
