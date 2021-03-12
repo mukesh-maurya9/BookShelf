@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<style>
+    .background {
+        background-image: url("https://i.pinimg.com/564x/fd/fc/fa/fdfcfac45bdd7b73b0ab93f9f7db01c0.jpg");
+    }
+    .newUser{
+        color:whitesmoke;
+        font-weight: 600;
+        font-size: 18px;
+    }
+
+    .fontWeight {
+        font-weight: 800;
+        color: white;
+        background-color: lightslategrey;
+        border-radius: 15px;
+
+    }
+</style>
+
+<head>
+    {{>main}}
+</head>
+
+<body>
+    {{>navbar}}
+    {{>MenuBar}}
+    <div class="container-fluid background">
+        <div class="row">
+            <div class="offset-md-5 col-md-5 ">
+                <center><br />
+                    <h1 class="fontWeight">BookShelf</h1>
+                    <h2 class="text text-danger fontWeight">{{errMessage}}</h2>
+                    <h2 class="text text-success fontWeight">{{successMessage}}</h2>
+                </center>
+                <div class="fontWeight">
+                    <form class="px-4 py-3" action="/auth/login" method="post">
+                        <div class="form-group ">
+                            <label for="exampleDropdownFormEmail1">Email address</label>
+                            <input name="email" type="email" class="form-control" id="exampleDropdownFormEmail1"
+                                placeholder="email@example.com" value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleDropdownFormPassword1">Password</label>
+                            <input type="password" name="password" class="form-control"
+                                id="exampleDropdownFormPassword1" placeholder="Password" value="">
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="dropdownCheck">
+                            <label class="form-check-label" for="dropdownCheck">
+                                Remember me
+                            </label>
+                        </div><br />
+                        <button type="submit" class="btn btn-primary">Login</button>&nbsp;
+                        <a href="#">Forget Password?</a>
+                    </form>
+                </div><br/>
+                <div class="newUser">
+                    New User? <a href="/auth/signup">SignUp</a>
+                </div>
+            </div>
+        </div>
+
+        <br><br><br><br><br><br><br>
+        {{>footer}}
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<style>
+    .menubar{
+        background-color: #474e5d;
+        color: white;
+    }
+</style>
+<section class="menubar">
+    <ul class="nav-below">
+        <li>
+            <a href="/books/libBooks">All Category</a>
+        </li>
+        <li>
+            <a href="http://localhost:5000/books/latest">New Arrivals</a>
+        </li>
+        <li>
+            <a href="/books/bestsellers">BestSellers</a>
+        </li>
+        <li>
+            <a href="/books/awardWinners">Award Winners</a>
+        </li>
+        <li>
+            <div class="dropdown">
+                <div class="drop">
+                    <a class="btn btn-dark" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Famous Authors
+                    </a>
+                </div>
+                <div class="dropdown-menu drop_down down">
+                    <a class="dropdown-item text-warning" href="/books/author?name=Munshi%20Premchandra"> Munshi Premchand</a>
+                    <a class="dropdown-item text-warning" href="/books/author?name=J.%20K.%20Rowling"> JK Rolling</a>
+                    <a class="dropdown-item text-warning" href="/books/author?name=Arundhati%20Roy">Arundhati Roy</a>
+                    <a class="dropdown-item text-warning" href="/books/author?name=Chetan%20Bhagat">Chetan Bhagat</a>
+                    <a class="dropdown-item text-warning" href="/books/author?name=Heather%20Ann%20Thompson">Heather Ann</a>
+                </div>
+            </div>
+        </li>
+    </ul>
+</section>

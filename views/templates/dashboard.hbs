@@ -1,0 +1,99 @@
+  {{>main}}
+  <style>
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 100vh}
+    /* Set gray background color and 100% height */
+    .admin{
+      position: fixed;
+    }
+    .other{
+      margin-left:350px;
+    }
+    .activeState {
+      background-color: #454c5b;
+      padding: 10px;
+      border-radius: 15px;
+      color: ivory;
+
+    }
+    .list{
+      list-style: none;
+      font-size: large;
+      border: darkgrey;
+      padding-left: 60px;
+      margin-top: 50px;
+
+    }
+    .fixedbody{
+      position:fixed;
+    }
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    /* On small screens, set height to 'auto' for the grid */
+    @media screen and (max-width: 767px) {
+      .row.content {height: auto;} 
+    }
+  </style>
+</head>
+<body>
+{{>navbar}}
+{{>MenuBar}}
+<div class="container-fluid fixedbody">
+  <div class="row content">
+    <div class="col-sm-3 sidenav hidden-xs admin"><br/>
+      <center><h2>Admin Panel</h2></center>
+      <ul class="list">
+        <li class="activeState"><a href="/admin/dashboard">Dashboard</a></li> <br/>
+        <li><a href="/admin/allUsers">Users Management</a></li> <br/>
+        <li><a href="#section3">Order List</a></li> <br/>
+        <li><a href="/books/allbooks">Books Update</a></li><br/>
+      </ul><br>
+    </div>
+    <br>
+    <div class="col-md-8 other">
+      <div class="card">
+        <h4 class="other">Welcome {{userData.firstName}}&nbsp;{{userData.lastName}}</h4>
+        &nbsp;<p class="text text-danger">Welcome Please check current Booking status.</p>
+      </div><br/>
+      <div class="row">
+        <div class="col-md-4 card">
+          <div class="card-body">
+            <h3 class="text text-info">Account Information</h3>
+            <p class="text text-success">Email: {{userData.email}}</p>
+            <p class="text text-warning"> Phone: {{userData.phone}}</p>
+          </div>
+        </div><br/>
+        <div class="col-md-4 card">
+          <div class="card-body">
+            <h3 class="text text-info">Users</h3>
+            <p class="text text-success">120 User</p>
+            <p class="text text-warning"> 05 Admin</p>
+          </div>
+        </div><br/>
+        <div class="col-md-4 card">
+          <div class="card-body">
+            <h3 class="text text-info">Pages</h3>
+            <p class="text text-success"> 15 Active</p> 
+            <p class="text text-danger"> 06 Hidden</p> 
+          </div>
+        </div><br/>
+        <div class="col-md-4 card">
+          <div class="card-body">
+            <h3 class="text text-info">Total Order {{this.count}}</h3> 
+            <p class="text text-success"> {{this.count}} Approved</p> 
+            <p class="text text-danger"> 0 Rejected</p> 
+          </div>
+        </div>
+        <div class="col-md-4 card">
+          <div class="card-body">
+            <h3 class="text text-info">Listed Books</h3>
+            <p class="text text-success"> 448 Books</p> 
+            <p class="text text-info"> 120 Maxgine</p> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

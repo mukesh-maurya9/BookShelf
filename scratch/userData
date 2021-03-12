@@ -1,0 +1,11 @@
+{
+  _id: 6047a410ac172e4b8c27ee5e,
+  firstName: 'Mukesh',
+  lastName: 'Maurya',
+  phone: 9988776655,
+  email: 'mukesh@gmail.com',
+  password: '$2a$08$DmEslKagfB/CQH7AQqbiU.wM0IFwdH7.u4y4.QbU6uY41.xSTlUqO',
+  role: 'admin',
+  isActive: true,
+  __v: 0
+}

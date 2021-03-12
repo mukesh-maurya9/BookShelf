@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+{{>main}}
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<style>
+    .background {
+        background-image: url('https://res.cloudinary.com/bookshelf/image/upload/v1615285510/BookShelf/Expect_More__Pay_Less_s4vxfc.jpg')
+    }
+    .space{
+        width: fit-content;
+        max-width: 900px;
+        height: 600px;
+        align-items: center;
+        margin-left: 200px;
+    }
+    /* Make the image fully responsive */
+    .carousel-inner img {
+            /* width: 100%; */
+            height: 500px;
+        }
+</style>
+{{>navbar}}
+{{>MenuBar}}
+
+<body>
+    <div class="background">
+        <div class="space">
+
+            <div id="demo" class="carousel slide" data-ride="carousel">
+                <ul class="carousel-indicators">
+                    <li data-target="#demo" data-slide-to="0" class="active"></li>
+                    <li data-target="#demo" data-slide-to="1"></li>
+                    <li data-target="#demo" data-slide-to="2"></li>
+                </ul>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="https://images.pexels.com/photos/3989751/pexels-photo-3989751.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="Los Angeles"
+                        width="1100" height="500">
+                        <div class="carousel-caption">
+                            <h3>Los Angeles</h3>
+                            <p>We had such a great time in LA!</p>
+                        </div>
+                    </div>
+                <div class="carousel-item">
+                    <img src="https://i.pinimg.com/564x/2c/44/a9/2c44a9653e6bb8b5ab2bf4be17f8ad9c.jpg" alt="Chicago"
+                        width="1100" height="500">
+                        <div class="carousel-caption">
+                        <h3>Chicago</h3>
+                        <p>Thank you, Chicago!</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.pinimg.com/564x/4e/84/a1/4e84a143f81468e61d0b958443d8c349.jpg" alt="New York"
+                    width="1100" height="500">
+                    <div class="carousel-caption">
+                        <h3>New York</h3>
+                        <p>We love the Big Apple!</p>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#demo" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+        </div>
+        </div>
+    </div>
+    {{>authors}}
+    {{>footer}}
+    <script>
+        $(function () {
+            $('#searchName').autocomplete({
+                source: function (req, res) {
+                    $.ajax({
+                        url: "autocomplete/",
+                        datatype: "jsonp",
+                        type: "GET",
+                        data: req,
+                        success: function (data) {
+                            res(data)
+                        },
+                        error: function (err) {
+                            console.log(err.status)
+                        }
+                    });
+                },
+                minLength: 1,
+                select: function (event, ui) {
+                    if (ui.item) {
+                        $('#searchName').text(ui.item.label)
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

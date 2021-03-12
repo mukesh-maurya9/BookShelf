@@ -1,0 +1,222 @@
+{{>main}}
+<style>
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {
+        height: 100vh
+    }
+
+    /* Set gray background color and 100% height */
+    .admin {
+        position: fixed;
+    }
+
+    .other {
+        margin-left: 350px;
+    }
+
+    .activeState {
+        background-color: #454c5b;
+        padding: 10px;
+        border-radius: 15px;
+        color: ivory;
+
+    }
+
+    .list {
+        list-style: none;
+        font-size: large;
+        border: darkgrey;
+        padding-left: 60px;
+        margin-top: 50px;
+
+    }
+
+    .sidenav {
+        background-color: #f1f1f1;
+        height: 100%;
+    }
+
+    /* On small screens, set height to 'auto' for the grid */
+    @media screen and (max-width: 767px) {
+        .row.content {
+            height: auto;
+        }
+    }
+</style>
+</head>
+
+<body>
+    {{>navbar}}
+    {{>MenuBar}}
+    <div class="container-fluid fixedbody">
+        <div class="row content">
+            <div class="col-sm-3 sidenav hidden-xs admin"><br />
+                <center>
+                    <h2>Admin Panel</h2>
+                </center>
+                <ul class="list">
+                    <li><a href="/admin/dashboard">Dashboard</a></li> <br />
+                    <li><a href="/admin/allUsers">Users Management</a></li> <br />
+                    <li><a href="#section3">Order List</a></li> <br />
+                    <li class="activeState"><a href="/books/allbooks">Books Update</a></li><br />
+                </ul><br>
+            </div>
+            <br>
+            <div class="col-md-9 other">
+                <div class="table-reponsive container table">
+                    <center>
+                        <h4 class="other">Welcome {{userData.firstName}}&nbsp;{{userData.lastName}} </h4>
+                    </center>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Price</th>
+                                <th>IsActive</th>
+                                <th>Category</th>
+                                <th>Add/Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{# each allBooks}}
+                            <tr>
+                                <td>{{this.title}}</td>
+                                <td>{{this.price}}</td>
+                                <td>{{this.isActive}}</td>
+                                <td>{{this.category}}</td>
+                                <td>
+                                    <span class="table-add"><button type="button"
+                                            class="btn btn-success btn-rounded btn-sm my-0 waves-effect waves-light"
+                                            data-toggle="modal" data-target="#myedit" id="{{_id}}">
+                                            Add
+                                        </button>
+                                    </span>
+                                    <span class="table-remove"><button type="button"
+                                            class="btn btn-danger btn-rounded btn-sm my-0 waves-effect waves-light"
+                                            data-toggle="modal" data-target="#myedit" id="{{_id}}">
+                                            De-Active
+                                        </button>
+                                    </span>
+                                </td>
+                            </tr>
+                            {{/ each}}
+                        </tbody>
+                    </table>
+                </div>
+                <!--Modal here-->
+                <div class="modal" id="myedit">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Edit User</h4>
+                                <button type="button" class="close" data-dismiss="modal"
+                                    aria-label="Close">&times;</button>
+                            </div>
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <form action="/admin/editUser" method="POST" id="update_user">
+                                    <input type="text" readonly class="form-control" id="update_id" name="_id">
+                                    <div class="form-group">
+                                        <label for="name">Name:</label>
+                                        <input type="text" class="form-control" id="update_name"
+                                            placeholder="Enter First name" name="name" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Email:</label>
+                                        <input type="email" class="form-control" id="update_email"
+                                            placeholder="Enter Email" name="email">
+                                    </div>
+                                    <label for="name">User Type:</label>
+                                    <label class="radio-inline">
+                                        <input type="radio" id="update_type" name="role" value="user" />
+                                        User
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" id="update_type" name="role" value="Admin" />
+                                        Admin
+                                    </label>
+                                    <div>
+                                        <label for="name">User Status:</label>
+                                        <label class="radio-inline">
+                                            <input type="radio" id="update_active" name="isActive" value="true" />
+                                            De-Active
+                                        </label>
+                                        {{!-- <label class="radio-inline">
+                                            <input type="radio" id="update_active" name="isActive" value="false" />
+                                            InActive
+                                        </label> --}}
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="submit" id="update_table" class="btn btn-primary">update</button>
+                                <button type="button" class="mclose btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+<!--Modal here-->
+<div class="modal" id="myedit">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Edit User</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form action="/admin/editUser" method="POST" id="update_user">
+                    <input type="text" readonly class="form-control" id="update_id" name="_id">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" class="form-control" id="update_name" placeholder="Enter First name"
+                            name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="update_email" placeholder="Enter Email"
+                            name="email">
+                    </div>
+                    <label for="name">User Type:</label>
+                    <label class="radio-inline">
+                        <input type="radio" id="update_type" name="role" value="user" />
+                        User
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" id="update_type" name="role" value="Admin" />
+                        Admin
+                    </label>
+                    <div>
+                        <label for="name">User Status:</label>
+                        <label class="radio-inline">
+                            <input type="radio" id="update_active" name="isActive" value="true" />
+                            Active
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" id="update_active" name="isActive" value="false" />
+                            InActive
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="mclose btn btn-danger" data-dismiss="modal">Close</button>
+                <button type="submit" id="update_table" class="btn btn-primary">update</button>
+            </div>
+        </div>
+    </div>
+    </body>
+
+    </html>

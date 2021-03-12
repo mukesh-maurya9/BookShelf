@@ -1,0 +1,135 @@
+use BookShelf
+
+db.books.insert({
+    "title": "The 3 Mistakes of My Life",
+    "author": "Chetan Bhagat",
+    "WrittenIn": 2008,
+    "price": 250,
+    "pages": "322",
+    "Language": "English",
+    "origin": "India",
+    "isActive": true,
+    "category": "Novel",
+    "genre": "Social",
+    "award": "Idea Best Selling Book ",
+    "awardWinners":true,
+    "image": "https://i.pinimg.com/564x/b2/2d/a3/b22da358b7f6dab1377d3d1a5ca19f00.jpg",
+    "likes": [4.5, "23k"],
+    "rating": "0.0",
+    "discription": "The 3 Mistakes of My Life is the third novel written by Chetan Bhagat. The book was published in May 2008 and had an initial print-run of 420,000. The novel follows the story of three friends and is based in the city of Ahmedabad in western India. This is the third best seller novel by Chetan Bhagat."
+  })
+
+=> &#8377 for rupees symbole
+
+db.users.insert({
+    fristName : "Mukesh",
+    lastName : "Maurya",
+    email: "mukesh.india9@gmail.com",
+    password: "12345",
+    phone:"7011074505",
+    address: {
+        location : "Bansgaon",
+        city:"Gorakhpur",
+        pin : "273403",
+        State: "Utter-Pradesh"
+    }
+})
+
+echo "# backend-project-mukesh-maurya-au9" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/attainu/backend-project-mukesh-maurya-au9.git
+git push -u origin main
+
+
+## API
+(GET)  http://localhost/auth/profile
+(GET)  http://localhost/books/latest
+(GET)  http://localhost/books/auther=chetan_bhagat
+(GET)  http://localhost/books/recommended
+(GET)  http://localhost/books?id=5212 
+
+(Post) http://localhost/auth/login
+(Post) http://localhost/auth/signup
+
+(PUT) http://localhost/auth/profile/update
+(DEL) http://localhost/auth/deleteUser
+
+
+work:
+
+create file -  kep seprate menu bar
+Create Dcription page:  buy now add card button
+latest page - buy now add card button
+Drop down auther
+Search bar with autocomplete\
+cart and increase quentity
+Navbar cdd correct
+about page details
+BestSellers
+## routes and hbs file
+TextBooks
+Award Winners
+Featured Authors
+
+ <table class="table ">
+                <thead>
+                  <tr>
+                    <th>Title</th>
+                    <th>Price</th>
+                    <th>IsActive</th>
+                    <th>Category</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {{# each allBooks}}
+                    <tr>
+                        <td>{{this.title}}</td>
+                        <td>{{this.price}}</td>
+                        <td>{{this.isActive}}</td>
+                        <td>{{this.category}}</td>
+                    </tr>
+                    {{/ each}}
+                </tbody>
+            </table>
+
+<img src="https://img.icons8.com/bubbles/100/000000/user.png"
+
+
+<div class="table-reponsive container table">
+                        <center>
+                            <h2>Hi Admin {{adminName}} </h2>
+                        </center>
+                        <table class="table ">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Price</th>
+                                    <th>IsActive</th>
+                                    <th>Category</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{# each allBooks}}
+                                <tr>
+                                    <td>{{this.title}}</td>
+                                    <td>{{this.price}}</td>
+                                    <td>{{this.isActive}}</td>
+                                    <td>{{this.category}}</td>
+                                    <td>
+                                        <button type="button" class="edit btn btn-info" data-toggel="modal"
+                                            data-target="#myedit" id="{{_id}}">
+                                            <span class="glyphicon glyphicon-edit"></span>
+                                        </button>
+                                        <button type="button" class="edit btn btn-danger">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                {{/ each}}
+                            </tbody>
+                        </table>
+                    </div>

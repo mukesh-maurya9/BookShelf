@@ -1,0 +1,54 @@
+<style>
+    .nav-items {
+        color: #ffffff;
+    }
+</style>
+<div class="home">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/home">BookShelf</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link active" href="/home">Home<span class="sr-only"></span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/auth/signup">Sign Up</a>
+                </li>
+                {{!-- {{#each userData}} --}}
+                 <li class="nav-item">
+                    <a class="nav-link" href="/auth/login">Login</a>
+                </li>
+                {{!-- {{/each}} --}}
+                {{!-- {{#if userData.token}} --}}
+                <li class="nav-item">
+                    <a class="nav-link" href="/auth/logout">Log Out</a>
+                </li>
+                {{!-- {{/if}} --}}
+                <li class="nav-item">
+                    <a class="nav-link" href="/auth/profile">{{userData.firstName}}</a>
+                </li>
+                <!-- {{#if userName }} -->
+                <li class="nav-item">
+                    <a class="nav-link" href="/auth/profile">{{userName.firstName}}</a>
+                </li>
+                <!-- {{/if}} -->
+            </ul>
+            <center>
+
+            <form action="/books/search" class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" id="searchName" name="title"
+                    placeholder="Search a book">
+                <input type="submit" class="btn btn-outline-warning" value="Search">
+                <li>&nbsp;&nbsp;
+            <button type="button" style="font-size: 15px;" class="btn btn-warning btn-md mr-1 mb-2">
+                <i class="fas fa-shopping-cart pr-0"> Cart</i>
+            </button>
+        </li>
+            </form>
+            </center>
+        </div>
+    </nav>
+</div>

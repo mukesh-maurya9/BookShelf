@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+{{>main}}
+<style>
+    @import url("http://fonts.googleapis.com/css?family=Oswald:300,400:latin,latin-ext");
+
+    /* body {
+        font-family: "Oswald", arial narrow, sans-serif;
+    } */
+
+    .container {
+        margin-left: 150px;
+        margin-top: 50px;
+    }
+
+    .image_design img {
+        border: 1px solid yellow;
+        margin-right: 50px;
+    }
+
+    @media (min-width: 768px) {
+        .col-md-6 {
+            width: 600px;
+        }
+    }
+
+    .rating {
+        margin-left: -2rem;
+    }
+
+    .rating li {
+        list-style-type: none;
+        font-size: 20px;
+    }
+
+    .head {
+        font-size: 40px;
+    }
+
+    .content_portion {
+        border-left: 1px solid gray;
+        margin-left: 10px;
+    }
+
+    .middle {
+        background-color: #221e1f;
+    }
+
+    .nav-below {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .nav-below li {
+        list-style-type: none;
+        margin: 4px 0px;
+    }
+
+    .nav-below li a {
+        text-decoration: none;
+        color: #ffffff;
+        font-weight: 900;
+        font-size: 13px;
+        font-family: sans-serif;
+        padding: 8px 18px;
+        border-right: 1px solid gray;
+        border-left: 1px solid gray;
+    }
+
+    .nav-below li a:hover {
+        background-color: #000;
+    }
+
+    .dropdown:hover>.dropdown-menu {
+        display: block;
+    }
+
+    .dropdown>.dropdown-toggle:active {
+        /*Without this, clicking will make it sticky*/
+        pointer-events: none;
+    }
+
+    .drop {
+        font-family: "Oswald", sans-serif;
+        font-size: 10px;
+        margin-top: -23px;
+        margin-bottom: -12px;
+    }
+    .side{
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .imgDiv {
+        border: 1px solid grey;
+        height: 500px;
+        width: 330px;
+        align-items: center;
+    }
+    .img {
+        height: 320px;
+        width: 300px;
+        border: 1px solid grey;
+    }
+
+    .down a {
+        color: white;
+    }
+</style>
+
+<body>
+    {{>navbar}}
+    {{>MenuBar}}
+    <div class="container">
+        <div class="row size">
+            <div class="col-md-4">
+                <div class="card">
+                    <h2 class="text text-danger fontWeight">{{errMessage}}</h2>
+                    <h2 class="text text-success fontWeight">{{successMessage}}</h2>
+                    <div class="card-body imgDiv">
+                        <img class="img" src="{{bookFields.image}}" alt="">
+                        <div class="table-responsive mb-2">
+                            <table class="table table-sm table-borderless">
+                                <tbody>
+                                    <tr>
+                                        <td style="font-size: 20px;" class="pl-0 pb-0 w-25">Quantity</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td class="pl-0">
+                                            <div class="def-number-input number-input safari_only mb-0">
+                                                <button style="font-size: 15px; border: 1px solid gray;"
+                                                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                                                    class="minus">-</button>
+                                                <input style="font-size: 15px;" class="quantity" min="0" name="quantity"
+                                                    value="1" type="number">
+                                                <button style="font-size: 15px; border: 1px solid gray"
+                                                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                                                    class="plus">+</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <a href="/order/buynow/{{bookFields.id}}"><button type="button" style="font-size: 15px;" class="btn btn-primary btn-md mr-1 mb-2">Buy
+                            now</button></a>
+                       <a href= "/order/addcart/{{bookFields.id}}"></a> <button type="button" style="font-size: 15px;" class="btn btn-warning btn-md mr-1 mb-2" href="/order/addcart/{{bookFields.id}}"><i
+                                class="fas fa-shopping-cart pr-2"></i>Add to
+                            cart
+                        </button></a>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body text-md-4">
+                        <h5 class="text text-secondary"><b>Title: {{bookFields.title}}</b></h5>
+                        <h6 class="text text-danger"><b>Author: {{bookFields.author}}</b></h6>
+                        <h6 class="text text-info"><b>Category: {{bookFields.category}}</b></h6>
+                    </div>
+                </div>
+            </div><br/>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="text text-primary"><b>Details: {{bookFields.discription}}</b></h6>
+                        </div>
+                    </div><br/>
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="text text-secondary"><b>Price: {{bookFields.price}} INR</b></p>
+                            <h6><b>Pages: {{bookFields.pages}}p</b></h6>
+                            <h6><b>Origin: {{bookFields.origin}}</b></h6>
+                        </div>
+                    </div><br/>
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="text text-secondary"><b>Language: {{bookFields.language}}</b></p>
+                            <h6 class="text text-primary"><b>Award: {{bookFields.award}}</b></h6>
+                            <h6><b>Year: {{bookFields.WrittenIn}}</b></h6>
+                        </div>
+                    </div><br/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        $(function () {
+            $('#searchName').autocomplete({
+                source: function (req, res) {
+                    $.ajax({
+                        url: "autocomplete/",
+                        datatype: "jsonp",
+                        type: "GET",
+                        data: req,
+                        success: function (data) {
+                            res(data)
+                        },
+                        error: function (err) {
+                            console.log(err.status)
+                        }
+                    });
+                },
+                minLength: 1,
+                select: function (event, ui) {
+                    if (ui.item) {
+                        $('#searchName').val(ui.item.label)
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

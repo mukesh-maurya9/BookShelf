@@ -1,0 +1,84 @@
+<style>
+    .menubar{
+        background-color: #474e5d;
+        color: white;
+    }
+</style>
+<style>
+    .nav-items {
+        color: #ffffff;
+    }
+</style>
+<div class="home">
+    <nav class="navbar bg-dark">
+        <a class="navbar-brand" href="/home">BookShelf</a>
+        <div id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/home">Home<span class="sr-only"></span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/auth/signup">Sign Up</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/auth/profile">{{userData.firstName}}</a>
+                </li>
+                <!-- {{#if userName }} -->
+                <li class="nav-item">
+                    <a class="nav-link" href="/auth/profile">{{userName.firstName}}</a>
+                </li>
+                <!-- {{/if}} -->
+            </ul>
+            <form action="/books/search" class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" id="searchName" name="title"
+                    placeholder="Search a book">
+                <input type="submit" class="btn btn-outline-warning" value="Search">
+                <li class="nav-item">
+                    <a class="nav-link" href="/auth/login">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/auth/logout">Log Out</a>
+                </li>
+            </form>
+        </div>
+    </nav>
+</div>
+<section class="menubar">
+    <ul class="nav-below">
+        <li>
+            <a href="/books/libBooks">All Category</a>
+        </li>
+        <li>
+            <a href="http://localhost:5000/books/latest">New Arrivals</a>
+        </li>
+        <li>
+            <a href="/books/bestsellers">BestSellers</a>
+        </li>
+        <li>
+            <a href="/books/awardWinners">Award Winners</a>
+        </li>
+        <li>
+            <div class="dropdown">
+                <div class="drop">
+                    <a class="btn btn-dark" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Famous Authors
+                    </a>
+                </div>
+                <div class="dropdown-menu drop_down down">
+                    <a class="dropdown-item text-warning" href="#">Shashi Tharoor</a>
+                    <a class="dropdown-item text-warning" href="#">Stephen Coonts</a>
+                    <a class="dropdown-item text-warning" href="#">Arundhati Roy</a>
+                    <a class="dropdown-item text-warning" href="#">Arundhati Roy</a>
+                    <a class="dropdown-item text-warning" href="#">Arundhati Roy</a>
+                    <a class="dropdown-item text-warning" href="#">Arundhati Roy</a>
+                    <a class="dropdown-item text-warning" href="#">Arundhati Roy</a>
+                </div>
+            </div>
+        </li>
+    </ul>
+</section>
